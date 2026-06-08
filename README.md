@@ -16,7 +16,7 @@ The repository also includes implementations of several baseline optimisation al
 
 * Adaptive Multi-Strategy Particle Swarm Optimisation (AMPSO)
 * SUMO-based traffic signal optimisation
-* Optuna hyperparameter tuning
+* Tree-structured Parzen Estimator (TPE) algorithm hyperparameter tuning
 * Novelty-guided search mechanism
 * Adaptive mutation strategy
 * Diversity-aware parameter adjustment
@@ -132,7 +132,7 @@ The primary objective is minimising average vehicle waiting time while maintaini
 
 ## Hyperparameter Optimisation
 
-The framework uses **Optuna** to automatically identify effective AMPSO parameter settings.
+The framework uses **Tree-structured Parzen Estimator (TPE) algorithm** to automatically identify effective AMPSO parameter settings.
 
 ### Tuned Parameters
 
