@@ -6,7 +6,7 @@ This repository presents **AMPSO (Adaptive Multi-Strategy Particle Swarm Optimis
 
 The proposed algorithm extends conventional Particle Swarm Optimisation (PSO) through the integration of multiple adaptive search strategies, including diversity-aware parameter adaptation, novelty-guided exploration, adaptive mutation, stagnation detection, and swarm restart mechanisms. These strategies improve exploration capability, mitigate premature convergence, and enhance optimisation performance under varying traffic conditions.
 
-The framework is integrated with the **Simulation of Urban Mobility (SUMO)** platform for realistic traffic simulation and evaluation. Additionally, **Optuna-based hyperparameter tuning** is employed to identify effective parameter configurations for improved optimisation performance.
+The framework is integrated with the **Simulation of Urban Mobility (SUMO)** platform for realistic traffic simulation and evaluation. Additionally, **Tree-structured Parzen Estimator (TPE) algorithm** is employed to identify effective parameter configurations for improved optimisation performance.
 
 The repository also includes implementations of several baseline optimisation algorithms for comparative evaluation.
 
