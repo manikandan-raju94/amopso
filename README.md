@@ -150,7 +150,7 @@ Minimise:
 * Queue length
 * Traffic congestion indicators
 
-The best-performing parameter configuration obtained through Optuna is used in subsequent experiments.
+The best-performing parameter configuration obtained through Tree-structured Parzen Estimator (TPE) algorithm is used in subsequent experiments.
 
 ---
 
