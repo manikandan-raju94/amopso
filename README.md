@@ -137,7 +137,54 @@ All algorithms are evaluated under identical traffic demand scenarios to ensure 
 
 ## Project Structure
 
+## Repository Structure
 
+```text
+AMPSO/
+│
+├── Additionalfiles/
+│   ├── Traffic signal configuration files
+│   └── Additional SUMO XML files
+│
+├── core/
+│   ├── junction_manager.py
+│   ├── main_mopso.py
+│   ├── MultiSignalBuilder.py
+│   ├── sumo_runner.py
+│   ├── sumo_runner_final.py
+│   └── xml_signal_builder.py
+│
+├── Demand/
+│   ├── generate_flows.py
+│   ├── low_traffic.rou.xml
+│   ├── medium_low_traffic.rou.xml
+│   └── high_traffic.rou.xml
+│
+├── methods/
+│   ├── pso.py
+│   ├── ga.py
+│   ├── aco.py
+│   ├── mopso_novelty.py
+│   ├── optuna_tuning.py
+│   └── compare_all_methods_pso.py
+│
+├── Network/
+│   └── network_signalized.net.xml
+│
+├── outputs/
+│   ├── Optimization results
+│   ├── Performance reports
+│   └── Simulation outputs
+│
+├── utils/
+│   ├── logger.py
+│   ├── metrics_extractor.py
+│   ├── phase_detector.py
+│   ├── signal_editor.py
+│   └── sumo_runner.py
+│
+└── runsimulation.sumocfg
+```
 ## Requirements
 
 ### Software
