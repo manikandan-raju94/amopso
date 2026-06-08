@@ -278,7 +278,7 @@ The following metrics are used for evaluation:
 * Novelty-guided search mechanism.
 * Adaptive mutation strategy.
 * Stagnation detection and swarm restart mechanism.
-* Optuna-based hyperparameter tuning.
+* Tree-structured Parzen Estimator (TPE) algorithm based hyperparameter tuning.
 * Hyperparameter sensitivity analysis.
 * Comparative evaluation against PSO, GA, ACO, and MOPSO.
 * SUMO-based traffic signal timing optimisation framework.
