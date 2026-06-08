@@ -4,138 +4,30 @@
 
 This repository presents **AMPSO (Adaptive Multi-Strategy Particle Swarm Optimisation)**, a swarm intelligence-based optimisation framework developed for intelligent traffic signal timing optimisation in urban transportation networks.
 
-The proposed algorithm extends conventional Particle Swarm Optimisation (PSO) through the integration of multiple adaptive search strategies, including diversity-aware parameter adaptation, novelty-guided exploration, adaptive mutation, stagnation detection, and swarm restart mechanisms. These strategies collectively improve exploration capability, prevent premature convergence, and enhance optimisation performance under dynamic traffic conditions.
+The proposed algorithm extends conventional Particle Swarm Optimisation (PSO) through the integration of multiple adaptive search strategies, including diversity-aware parameter adaptation, novelty-guided exploration, adaptive mutation, stagnation detection, and swarm restart mechanisms. These strategies improve exploration capability, mitigate premature convergence, and enhance optimisation performance under varying traffic conditions.
 
-The framework is integrated with the **Simulation of Urban Mobility (SUMO)** platform to evaluate traffic signal timing plans in realistic traffic environments. Additionally, **Optuna-based hyperparameter optimisation** is employed to automatically identify high-performing parameter configurations.
+The framework is integrated with the **Simulation of Urban Mobility (SUMO)** platform for realistic traffic simulation and evaluation. Additionally, **Optuna-based hyperparameter tuning** is employed to identify effective parameter configurations for improved optimisation performance.
 
-This repository includes the AMPSO implementation, hyperparameter optimisation framework, sensitivity analysis experiments, and comparative evaluations against baseline optimisation algorithms.
+The repository also includes implementations of several baseline optimisation algorithms for comparative evaluation.
 
 ---
 
-## Key Features
+## Features
 
 * Adaptive Multi-Strategy Particle Swarm Optimisation (AMPSO)
-* SUMO-based traffic signal timing optimisation
-* Optuna hyperparameter optimisation
-* Diversity-aware adaptive parameter adjustment
+* SUMO-based traffic signal optimisation
+* Optuna hyperparameter tuning
 * Novelty-guided search mechanism
 * Adaptive mutation strategy
+* Diversity-aware parameter adjustment
 * Stagnation detection and recovery
 * Swarm restart mechanism
 * Parallel fitness evaluation
 * Hyperparameter sensitivity analysis
 * Comparative benchmarking framework
-* Scalable optimisation architecture
+* Realistic traffic demand scenarios
 
 ---
-
-## Methodology
-
-### Adaptive Parameter Adjustment
-
-The algorithm dynamically adjusts optimisation parameters throughout the search process to balance exploration and exploitation.
-
-### Diversity-Aware Learning
-
-Population diversity is continuously monitored and used to adapt learning behaviour, helping maintain effective exploration of the search space.
-
-### Novelty-Guided Search
-
-A novelty metric based on particle distance encourages exploration of previously unexplored regions, reducing the likelihood of premature convergence.
-
-### Adaptive Mutation Strategy
-
-Mutation probability is adjusted according to optimisation progress and stagnation level, enabling the swarm to escape local optima.
-
-### Stagnation Detection
-
-The optimisation process monitors solution improvement and identifies stagnation when progress becomes limited.
-
-### Swarm Restart Mechanism
-
-When stagnation is detected, a portion of the swarm is reinitialised to restore diversity and improve global search capability.
-
----
-
-## Fitness Function
-
-The optimisation objective combines multiple traffic performance indicators:
-
-```text
-Fitness = 0.8 × Waiting Time + 0.2 × Queue Length + Novelty Reward
-```
-
-Where:
-
-* **Waiting Time** represents average vehicle delay.
-* **Queue Length** represents traffic congestion levels.
-* **Novelty Reward** promotes solution diversity and exploration.
-
-The primary objective is to minimise average vehicle waiting time while maintaining efficient traffic flow.
-
----
-
-## Hyperparameter Optimisation
-
-The framework employs **Optuna** to automatically identify effective parameter configurations.
-
-### Tuned Parameters
-
-* Number of particles
-* Cognitive coefficient (c1)
-* Social coefficient (c2)
-* Number of optimisation iterations
-* Exploration-exploitation settings
-
-### Optimisation Objective
-
-The tuning process seeks to minimise:
-
-* Average vehicle waiting time
-* Queue length
-* Traffic congestion indicators
-
-The best-performing parameter configuration identified by Optuna is subsequently used in the optimisation experiments.
-
----
-
-## Hyperparameter Sensitivity Analysis
-
-A comprehensive sensitivity analysis was conducted to evaluate the influence of different parameter settings on optimisation performance.
-
-### Parameters Analysed
-
-* Swarm size (particles)
-* Cognitive coefficient (c1)
-* Social coefficient (c2)
-* Number of iterations
-* Random seed variations
-
-### Evaluation Metrics
-
-The impact of parameter variations is assessed using:
-
-* Average vehicle waiting time
-* Queue length
-* Convergence behaviour
-* Optimisation stability
-
-The analysis provides insights into the robustness and reliability of the proposed AMPSO framework.
-
-## Comparative Evaluation
-
-The proposed AMPSO algorithm is evaluated against widely used optimisation approaches for traffic signal control.
-
-### Benchmark Algorithms
-
-* Particle Swarm Optimisation (PSO)
-* Genetic Algorithm (GA)
-* Multi-Objective Particle Swarm Optimisation (MOPSO)
-* Other baseline optimisation methods
-
-All algorithms are evaluated under identical traffic demand scenarios to ensure fair comparison.
-
-## Project Structure
 
 ## Repository Structure
 
@@ -172,9 +64,9 @@ AMPSO/
 │   └── network_signalized.net.xml
 │
 ├── outputs/
-│   ├── Optimization results
-│   ├── Performance reports
-│   └── Simulation outputs
+│   ├── Simulation outputs
+│   ├── Optimisation results
+│   └── Performance metrics
 │
 ├── utils/
 │   ├── logger.py
@@ -185,23 +77,152 @@ AMPSO/
 │
 └── runsimulation.sumocfg
 ```
+
+---
+
+## Methodology
+
+### Adaptive Multi-Strategy Particle Swarm Optimisation (AMPSO)
+
+The proposed AMPSO framework incorporates multiple adaptive mechanisms to improve optimisation performance:
+
+### Adaptive Parameter Adjustment
+
+The inertia weight and learning parameters are dynamically adjusted during optimisation to balance exploration and exploitation.
+
+### Diversity-Aware Search
+
+Population diversity is continuously monitored and used to guide the search process, reducing premature convergence.
+
+### Novelty-Guided Exploration
+
+A novelty metric based on particle distances encourages exploration of unexplored regions of the search space.
+
+### Adaptive Mutation
+
+Mutation probability changes according to optimisation progress and stagnation level, helping the swarm escape local optima.
+
+### Stagnation Detection
+
+The algorithm identifies periods of limited improvement and activates recovery strategies.
+
+### Swarm Restart Mechanism
+
+A portion of the swarm is reinitialised when stagnation occurs, restoring diversity and improving global search capability.
+
+---
+
+## Fitness Function
+
+The optimisation objective combines traffic efficiency and exploration capability:
+
+```text
+Fitness = 0.8 × Waiting Time + 0.2 × Queue Length + Novelty Reward
+```
+
+Where:
+
+* Waiting Time represents average vehicle delay.
+* Queue Length represents congestion level.
+* Novelty Reward promotes exploration and diversity.
+
+The primary objective is minimising average vehicle waiting time while maintaining efficient traffic flow.
+
+---
+
+## Hyperparameter Optimisation
+
+The framework uses **Optuna** to automatically identify effective AMPSO parameter settings.
+
+### Tuned Parameters
+
+* Number of particles
+* Cognitive coefficient (c1)
+* Social coefficient (c2)
+* Number of iterations
+* Random seed settings
+
+### Optimisation Objective
+
+Minimise:
+
+* Average waiting time
+* Queue length
+* Traffic congestion indicators
+
+The best-performing parameter configuration obtained through Optuna is used in subsequent experiments.
+
+---
+
+## Hyperparameter Sensitivity Analysis
+
+A sensitivity analysis was conducted to evaluate the influence of parameter settings on optimisation performance.
+
+### Evaluated Parameters
+
+* Swarm size (particles)
+* Cognitive coefficient (c1)
+* Social coefficient (c2)
+* Number of iterations
+
+### Evaluation Metrics
+
+* Average waiting time
+* Queue length
+* Convergence behaviour
+* Optimisation stability
+
+The analysis provides insights into the robustness and reliability of the AMPSO framework.
+
+---
+
+## Implemented Algorithms
+
+The repository contains implementations of the following optimisation methods:
+
+* Adaptive Multi-Strategy Particle Swarm Optimisation (AMPSO)
+* Particle Swarm Optimisation (PSO)
+* Genetic Algorithm (GA)
+* Ant Colony Optimisation (ACO)
+* Multi-Objective Particle Swarm Optimisation (MOPSO)
+
+All algorithms are evaluated under identical traffic demand scenarios for fair comparison.
+
+---
+
+## Traffic Scenarios
+
+The optimisation framework supports multiple traffic demand levels:
+
+* Low Traffic Scenario
+* Medium Traffic Scenario
+* High Traffic Scenario
+
+Traffic demand is generated using SUMO route files located in the Demand directory.
+
+---
+
 ## Requirements
 
 ### Software
 
-* Python 3.10 or later
+* Python 3.10+
 * SUMO (Simulation of Urban Mobility)
 * TraCI
 
 ### Python Libraries
 
-Install the required packages:
+Install dependencies:
 
+```bash
 pip install numpy pandas matplotlib optuna
+```
+
+---
 
 ## SUMO Installation
 
-Install SUMO from the official website:
+Download SUMO from:
 
 https://sumo.dlr.de
 
@@ -219,62 +240,48 @@ export SUMO_HOME=/path/to/sumo
 set SUMO_HOME=C:\Program Files (x86)\Eclipse\Sumo
 ```
 
-## Running the Optimisation
+---
 
-Execute the AMPSO optimisation process:
-
-```bash
-python run_ampso.py
-
-## Running Hyperparameter Optimisation
-
-Execute Optuna tuning:
+## Running Hyperparameter Tuning
 
 ```bash
-python optuna_tuning.py
+python methods/optuna_tuning.py
 ```
 
-## Experimental Outputs
+---
 
-The framework reports:
+## Running Comparative Evaluation
 
-* Best waiting time
-* Average queue length
-* Population diversity
-* Best signal timing plan
-* Convergence statistics
+```bash
+python methods/compare_all_methods_pso.py
+```
 
-Example:
-
-[1/15] Best Wait: 18.42 | Div: 0.312
-[2/15] Best Wait: 17.61 | Div: 0.287
-[3/15] Best Wait: 16.58 | Div: 0.243
-
+---
 
 ## Performance Metrics
 
-The following traffic performance indicators are used:
+The following metrics are used for evaluation:
 
 * Average Vehicle Waiting Time
 * Queue Length
 * Traffic Delay
 * Vehicle Throughput
-* Convergence Speed
+* Convergence Performance
 * Computational Efficiency
 
 ---
 
 ## Research Contributions
 
-1. Development of an Adaptive Multi-Strategy Particle Swarm Optimisation (AMPSO) framework.
-2. Diversity-aware adaptive parameter adjustment.
-3. Novelty-guided exploration mechanism.
-4. Adaptive mutation strategy for escaping local optima.
-5. Stagnation detection and swarm restart mechanism.
-6. Optuna-based hyperparameter optimisation.
-7. Hyperparameter sensitivity analysis.
-8. Comparative evaluation against baseline optimisation approaches.
-9. Integration with SUMO for realistic traffic signal optimisation.
+* Development of an Adaptive Multi-Strategy Particle Swarm Optimisation (AMPSO) framework.
+* Diversity-aware adaptive parameter control.
+* Novelty-guided search mechanism.
+* Adaptive mutation strategy.
+* Stagnation detection and swarm restart mechanism.
+* Optuna-based hyperparameter tuning.
+* Hyperparameter sensitivity analysis.
+* Comparative evaluation against PSO, GA, ACO, and MOPSO.
+* SUMO-based traffic signal timing optimisation framework.
 
 ---
 
@@ -285,7 +292,7 @@ This framework can be applied to:
 * Intelligent Transportation Systems (ITS)
 * Smart City Traffic Management
 * Urban Mobility Optimisation
-* Traffic Signal Timing Design
+* Traffic Signal Timing Optimisation
 * Transportation Engineering Research
 * Swarm Intelligence Research
 * Metaheuristic Optimisation Studies
@@ -316,6 +323,7 @@ This project is released under the MIT License.
 ## Author
 
 **Manikandan**
+
 School of Computer Science and Engineering
 
 Vellore Institute of Technology (VIT), India
